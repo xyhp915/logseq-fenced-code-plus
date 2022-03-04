@@ -1,0 +1,31 @@
+{
+  "name": "logseq-fenced-code-plus",
+  "version": "0.0.1",
+  "description": "A Logseq plugin for missing types of fenced code block.",
+  "scripts": {
+    "dev": "parcel serve ./index.html --public-url ./ --no-hmr",
+    "build": "parcel build ./index.html --public-url ."
+  },
+  "repository": "https://github.com/xyhp915/logseq-fenced-code-plus.git",
+  "author": "charlie",
+  "license": "MIT",
+  "private": false,
+  "logseq": {
+    "main": "dist/index.html",
+    "id": "_fq3zfw9ik"
+  },
+  "dependencies": {
+    "@logseq/libs": "latest",
+    "react": "17.0.2"
+  },
+  "alias": {
+    "react/jsx-dev-runtime": "./node_modules/react/jsx-dev-runtime.js",
+    "react/jsx-runtime": "./node_modules/react/jsx-runtime.js",
+    "react": "./src/React.ts",
+    "react-dom": "./src/ReactDOM.ts"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.39",
+    "parcel": "latest"
+  }
+}
