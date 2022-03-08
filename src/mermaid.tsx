@@ -5,10 +5,10 @@ export default function (props: { content: string }) {
   const { content } = props
   const elRef = React.useRef(null)
   const [ready, setReady] = React.useState(false)
+  const host = logseq.Experiments.ensureHostScope()
 
   React.useEffect(() => {
-    // @ts-ignore
-    if (top.mermaid) {
+    if (host.mermaid) {
       return setReady(true)
     }
 
@@ -29,15 +29,13 @@ export default function (props: { content: string }) {
   React.useEffect(() => {
     if (!ready || !content?.trim()) return
 
-    // @ts-ignore
-    if (top.mermaid) {
+    if (host.mermaid) {
       if (elRef.current) {
         delete elRef.current.dataset.processed
         elRef.current.textContent = content
       }
 
-      // @ts-ignore
-      top.mermaid.init()
+      host.mermaid.init()
     }
   }, [ready, content])
 
