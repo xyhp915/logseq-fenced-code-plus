@@ -12,22 +12,28 @@ export default function (props: { content: string }) {
       return setReady(true)
     }
 
+    let timer
     logseq.Experiments
-      .loadScripts('https://unpkg.com/mermaid@8.14.0/dist/mermaid.min.js')
+      .loadScripts('./vendors/mermaid.min.js')
       .then(() => {
-        setTimeout(() => {
+        timer = setTimeout(() => {
           setReady(true)
-        }, 200)
+        }, 50)
       })
+
+    return () => {
+      timer && clearTimeout(timer)
+    }
   }, [ready])
 
   React.useEffect(() => {
-    if (!ready) return
+    if (!ready || !content?.trim()) return
 
     // @ts-ignore
     if (top.mermaid) {
       if (elRef.current) {
         delete elRef.current.dataset.processed
+        elRef.current.textContent = content
       }
 
       // @ts-ignore
@@ -41,9 +47,7 @@ export default function (props: { content: string }) {
         (<div className={'mermaid'} ref={elRef}
               onClick={(e) => {
                 logseq.UI.showMsg('hello clicked :)')
-              }}>
-          {content}
-        </div>) :
+              }}/>) :
         (<strong> Loading ...</strong>)
       }
     </>)
