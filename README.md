@@ -2,7 +2,7 @@
 
 A Logseq plugin for missing types of fenced code block.
 
-> 🛠 In development. The minimal version of Logseq Desktop [0.6.3](https://github.com/logseq/logseq/releases)
+> 🛠 In development. The minimal version of Logseq Desktop [0.6.4](https://github.com/logseq/logseq/releases)
 
 ### Supported syntax types
 
