@@ -42,10 +42,7 @@ export default function (props: { content: string }) {
   return (
     <>
       {ready ?
-        (<div className={'mermaid'} ref={elRef}
-              onClick={(e) => {
-                logseq.UI.showMsg('hello clicked :)')
-              }}/>) :
+        (<div className={'mermaid'} ref={elRef}/>) :
         (<strong> Loading ...</strong>)
       }
     </>)

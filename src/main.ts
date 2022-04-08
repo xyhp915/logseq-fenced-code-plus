@@ -22,7 +22,7 @@ function main (baseInfo: LSPluginBaseInfo) {
   if (settings.mermaid) {
     logseq.Experiments.registerFencedCodeRenderer(
       Supports.Mermaid, {
-        edit: false,
+        edit: true,
         render: mermaidRenderer
       }
     )
