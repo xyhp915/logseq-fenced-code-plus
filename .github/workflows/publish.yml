@@ -27,6 +27,7 @@ jobs:
           yarn build
           mkdir ${{ env.PLUGIN_NAME }}
           cp LICENSE README.md package.json icon.png ${{ env.PLUGIN_NAME }}
+          mv vendors ${{ env.PLUGIN_NAME }}
           mv dist ${{ env.PLUGIN_NAME }}
           zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
           ls
