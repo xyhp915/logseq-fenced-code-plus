@@ -12,10 +12,11 @@
   "private": false,
   "logseq": {
     "main": "dist/index.html",
+    "icon": "./icon.png",
     "id": "_fq3zfw9ik"
   },
   "dependencies": {
-    "@logseq/libs": "latest",
+    "@logseq/libs": "^0.0.6",
     "react": "17.0.2"
   },
   "alias": {
