@@ -7,6 +7,7 @@ A Logseq plugin for missing types of fenced code block.
 ### Supported syntax types
 
 - [x] [mermaid](https://mermaid-js.github.io/mermaid/#/)
+- [ ] 🧑‍💻 which type do you want? Just make a [PR](https://github.com/xyhp915/logseq-fenced-code-plus/pulls)!
 
 ### Licence
 
