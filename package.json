@@ -1,6 +1,6 @@
 {
   "name": "logseq-fenced-code-plus",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Logseq plugin for missing types of fenced code block.",
   "scripts": {
     "dev": "parcel serve ./index.html --public-url ./ --no-hmr",
@@ -16,7 +16,7 @@
     "id": "_fq3zfw9ik"
   },
   "dependencies": {
-    "@logseq/libs": "^0.0.6",
+    "@logseq/libs": "^0.0.9",
     "react": "17.0.2"
   },
   "alias": {
