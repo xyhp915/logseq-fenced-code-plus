@@ -9,12 +9,12 @@ A Logseq plugin for missing types of fenced code block.
 1. Install this plugin
 2. Activate it
 3. Add a markdown code block to any of your pages like this:
-```
-\`\`\`mermaid
-graph LR
-Apples --> Bannana
-\`\`\`
-```
+   ````markdown
+   ```mermaid
+   graph LR
+   Apples --> Bananas
+   ```
+   ````
 4. Click outside of the code block
 5. Tadaa!
 
