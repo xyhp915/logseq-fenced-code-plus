@@ -18,6 +18,15 @@ export default function (props: { content: string }) {
       .then(() => {
         timer = setTimeout(() => {
           setReady(true)
+
+          let theme = "default"
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = "dark"
+          }
+          host.mermaid.mermaidAPI.initialize({
+            theme: theme
+          })
+
         }, 50)
       })
 
