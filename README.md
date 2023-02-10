@@ -21,7 +21,7 @@ A Logseq plugin for missing types of fenced code block.
 ### Supported syntax types
 
 - [x] [mermaid](https://mermaid-js.github.io/mermaid/#/)
-- [x] [echarts](https://echarts.apache.org/en/index.html) 
+- [x] [echarts](https://echarts.apache.org/en/index.html) Thanks to @haydenull https://github.com/xyhp915/logseq-fenced-code-plus/pull/19
 - [ ] 🧑‍💻 which type do you want to support? Feel free to make
   your [request](https://github.com/xyhp915/logseq-fenced-code-plus/issues/new)!
 
