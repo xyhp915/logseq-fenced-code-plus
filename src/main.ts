@@ -2,10 +2,12 @@ import '@logseq/libs'
 import { LSPluginBaseInfo, SettingSchemaDesc } from '@logseq/libs/dist/LSPlugin'
 import mermaidRenderer from './mermaid'
 import echartsRenderer from './echarts'
+import TikzjaxRenderer from './tikzjax'
 
 const Supports = {
   Mermaid: 'mermaid',
   Echarts: 'echarts',
+  TikZJax: 'tikz'
 }
 
 const settingsSchema: Array<SettingSchemaDesc> = [
@@ -23,9 +25,16 @@ const settingsSchema: Array<SettingSchemaDesc> = [
     description: 'Use Echarts to render the chart.',
     default: true
   },
+  {
+    key: 'tikzjax',
+    type: 'boolean',
+    title: 'Support TikZJax (💡fenced code type is `tikz`)?',
+    description: 'TikZJax converts script tags (containing TikZ code) into SVGs. (http://tikzjax.com/).',
+    default: false
+  },
 ]
 
-function main (baseInfo: LSPluginBaseInfo) {
+function main(baseInfo: LSPluginBaseInfo) {
   const { settings } = baseInfo
 
   if (settings.mermaid) {
@@ -41,6 +50,15 @@ function main (baseInfo: LSPluginBaseInfo) {
       Supports.Echarts, {
         edit: true,
         render: echartsRenderer,
+      }
+    )
+  }
+
+  if (settings.tikzjax) {
+    logseq.Experiments.registerFencedCodeRenderer(
+      Supports.TikZJax, {
+        edit: true,
+        render: TikzjaxRenderer
       }
     )
   }
