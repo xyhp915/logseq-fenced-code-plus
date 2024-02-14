@@ -40,7 +40,7 @@ function main(baseInfo: LSPluginBaseInfo) {
   if (settings.mermaid) {
     logseq.Experiments.registerFencedCodeRenderer(
       Supports.Mermaid, {
-        edit: true,
+        edit: false,
         render: mermaidRenderer
       }
     )
@@ -48,7 +48,7 @@ function main(baseInfo: LSPluginBaseInfo) {
   if (settings.echarts) {
     logseq.Experiments.registerFencedCodeRenderer(
       Supports.Echarts, {
-        edit: true,
+        edit: false,
         render: echartsRenderer,
       }
     )
@@ -57,7 +57,7 @@ function main(baseInfo: LSPluginBaseInfo) {
   if (settings.tikzjax) {
     logseq.Experiments.registerFencedCodeRenderer(
       Supports.TikZJax, {
-        edit: true,
+        edit: false,
         render: TikzjaxRenderer
       }
     )
