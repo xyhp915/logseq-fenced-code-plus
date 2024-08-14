@@ -10,6 +10,14 @@ export default function (props: { content: string }) {
   const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
 
   React.useEffect(() => {
+    async function fetchTheme() {
+      const userConfigs = await logseq.App.getUserConfigs()
+      setTheme(userConfigs.preferredThemeMode || 'light')
+    }
+    fetchTheme()
+  }, [])
+
+  React.useEffect(() => {
     logseq.App.onThemeModeChanged(({ mode }) => setTheme(mode))
   }, [])
 
@@ -18,6 +26,20 @@ export default function (props: { content: string }) {
       echartsRef.current.setOption({ darkMode: theme === 'dark' })
     }
   }, [theme])
+
+  React.useEffect(() => {
+    if (echartsRef.current) {
+      echartsRef.current.dispose()
+      const echarts = (parent.window as any).echarts
+      const myChart = echarts.init(elRef.current, theme)
+      echartsRef.current = myChart
+      if (content) {
+        const option = JSON.parse(content)
+        option.backgroundColor = 'transparent'
+        myChart.setOption(option)
+      }
+    }
+  }, [theme, content])
 
   React.useEffect(() => {
     if (host.echarts) {
@@ -44,9 +66,10 @@ export default function (props: { content: string }) {
     if (host.echarts) {
       if (elRef.current) {
         const echarts = (parent.window as any).echarts
-        const myChart = echarts.init(elRef.current)
+        const myChart = echarts.init(elRef.current, theme)
         echartsRef.current = myChart
         const option = JSON.parse(content)
+        option.backgroundColor = 'transparent'
         console.log('[faiz:] === myChart', myChart, option)
         myChart.setOption(option)
       }
