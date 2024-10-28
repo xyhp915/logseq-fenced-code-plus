@@ -3,11 +3,13 @@ import { LSPluginBaseInfo, SettingSchemaDesc } from '@logseq/libs/dist/LSPlugin'
 import mermaidRenderer from './mermaid'
 import echartsRenderer from './echarts'
 import TikzjaxRenderer from './tikzjax'
+import htmlRenderer from './htmlmixed'
 
 const Supports = {
   Mermaid: 'mermaid',
   Echarts: 'echarts',
-  TikZJax: 'tikz'
+  TikZJax: 'tikz',
+  HTMLmixed: 'htmlmixed',
 }
 
 const settingsSchema: Array<SettingSchemaDesc> = [
@@ -23,6 +25,13 @@ const settingsSchema: Array<SettingSchemaDesc> = [
     type: 'boolean',
     title: 'Support echarts?',
     description: 'Use Echarts to render the chart.',
+    default: true
+  },
+  {
+    key: 'htmlmixed',
+    type: 'boolean',
+    title: 'Support html mixed tags?',
+    description: 'Render with html mixed tags',
     default: true
   },
   {
@@ -45,11 +54,21 @@ function main(baseInfo: LSPluginBaseInfo) {
       }
     )
   }
+
   if (settings.echarts) {
     logseq.Experiments.registerFencedCodeRenderer(
       Supports.Echarts, {
         edit: false,
         render: echartsRenderer,
+      }
+    )
+  }
+
+  if (settings.htmlmixed) {
+    logseq.Experiments.registerFencedCodeRenderer(
+      Supports.HTMLmixed, {
+        edit: false,
+        render: htmlRenderer,
       }
     )
   }
