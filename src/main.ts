@@ -4,12 +4,14 @@ import mermaidRenderer from './mermaid'
 import echartsRenderer from './echarts'
 import TikzjaxRenderer from './tikzjax'
 import htmlRenderer from './htmlmixed'
+import typstRenderer from './typst'
 
 const Supports = {
   Mermaid: 'mermaid',
   Echarts: 'echarts',
   TikZJax: 'tikz',
   HTMLmixed: 'htmlmixed',
+  Typst: 'typst',
 }
 
 const settingsSchema: Array<SettingSchemaDesc> = [
@@ -41,6 +43,13 @@ const settingsSchema: Array<SettingSchemaDesc> = [
     description: 'TikZJax converts script tags (containing TikZ code) into SVGs. (http://tikzjax.com/).',
     default: false
   },
+  {
+    key: 'typst',
+    type: 'boolean',
+    title: 'Support Typst?',
+    description: 'Typst is a new markup-based typesetting system that is powerful and easy to learn. https://typst.app/',
+    default: false
+  }
 ]
 
 function main(baseInfo: LSPluginBaseInfo) {
@@ -78,6 +87,15 @@ function main(baseInfo: LSPluginBaseInfo) {
       Supports.TikZJax, {
         edit: false,
         render: TikzjaxRenderer
+      }
+    )
+  }
+
+  if (settings.typst) {
+    logseq.Experiments.registerFencedCodeRenderer(
+      Supports.Typst, {
+        edit: false,
+        render: typstRenderer
       }
     )
   }
