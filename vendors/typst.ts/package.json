@@ -1,0 +1,25 @@
+{
+  "name": "typst.ts",
+  "description": "Run Typst in JavaScriptWorld.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "parcel build --target index --no-source-maps",
+    "postinstall": "yarn build"
+  },
+  "dependencies": {
+    "@myriaddreamin/typst-ts-renderer": "^0.5.0-rc8",
+    "@myriaddreamin/typst-ts-web-compiler": "^0.5.0-rc8",
+    "@myriaddreamin/typst.ts": "^0.5.0-rc8"
+  },
+  "targets": {
+    "main": false,
+    "index": {
+      "source": "./index.js",
+      "outputFormat": "global"
+    }
+  },
+  "devDependencies": {
+    "parcel": "2.8.3",
+    "typescript": "^5.6.3"
+  }
+}
