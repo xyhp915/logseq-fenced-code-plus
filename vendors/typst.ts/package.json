@@ -3,7 +3,8 @@
   "description": "Run Typst in JavaScriptWorld.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "parcel build --target index --no-source-maps"
+    "build": "parcel build --target index --no-source-maps",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "@myriaddreamin/typst-ts-renderer": "^0.5.0-rc8",

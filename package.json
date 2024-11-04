@@ -4,7 +4,8 @@
   "description": "A Logseq plugin for missing types of fenced code block.",
   "scripts": {
     "dev": "parcel serve ./index.html --public-url ./ --no-hmr",
-    "build": "parcel build ./index.html --public-url ."
+    "build": "parcel build ./index.html --public-url .",
+    "preinstall": "yarn --cwd vendors/typst.ts/ install"
   },
   "repository": "https://github.com/xyhp915/logseq-fenced-code-plus.git",
   "author": "charlie",
